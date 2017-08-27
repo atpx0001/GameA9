@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class NpcForEdit: UnitForEdit {
+public class NpcForEdit {
     public string name = "电脑";
     public int id;
 

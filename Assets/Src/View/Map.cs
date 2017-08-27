@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Map: MonoBehaviour {
     public Node nodeSeed;
+    public Npc npcSeed;
+    public Item itemSeed;
     public MapForEdit gd;
     Dictionary<NodeForEdit, Node> nodeDict = new Dictionary<NodeForEdit, Node>();
     Node curNode;
     public Transform itemTable;
+    public List<Npc> npcs;
+    public List<Item> items;
     private void Start() {
         curNode = CreateNode(gd.nodes[0], Vector3.zero, 0);
         nodeSeed.gameObject.SetActive(false);
@@ -30,25 +34,35 @@ public class Map: MonoBehaviour {
             }
         }
 
-        List<UnitForEdit> objs = new List<UnitForEdit>();
-        foreach(var v in cur.gd.items)
-            objs.Add(v);
-        foreach(var v in cur.gd.npcs)
-            objs.Add(v);
-        Item iseed = itemTable.GetChild(0).GetComponent<Item>();
-        iseed.gameObject.SetActive(false);
-        for(int i = 0; i < objs.Count; i++) {
-            Item it = null;
-            if(i < itemTable.childCount) {
-                it = itemTable.GetChild(i).GetComponent<Item>();
+        foreach(var v in items) v.gameObject.SetActive(false);
+        foreach(var v in npcs) v.gameObject.SetActive(false);
+        itemSeed.gameObject.SetActive(false);
+        npcSeed.gameObject.SetActive(false);
+        int curIdx = 0;
+        foreach(var v in cur.gd.items) {
+            Item dval = null;
+            if(curIdx >= items.Count) {
+                dval = Instantiate(itemSeed, itemTable);
+                items.Add(dval);
             } else {
-                it = Instantiate(iseed, iseed.transform.parent);
+                dval = items[curIdx];
             }
-            it.gameObject.SetActive(true);
-            it.SetData(objs[i]);
+            dval.SetData(v);
+            dval.gameObject.SetActive(true);
+            curIdx++;
         }
-        for(int i = objs.Count; i < itemTable.childCount; i++) {
-            itemTable.GetChild(i).gameObject.SetActive(false);
+        curIdx = 0;
+        foreach(var v in cur.gd.npcs) {
+            Npc dval = null;
+            if(curIdx >= npcs.Count) {
+                dval = Instantiate(npcSeed, itemTable);
+                npcs.Add(dval);
+            } else {
+                dval = npcs[curIdx];
+            }
+            dval.SetData(v);
+            dval.gameObject.SetActive(true);
+            curIdx++;
         }
     }
 

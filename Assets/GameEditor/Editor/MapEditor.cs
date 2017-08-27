@@ -80,7 +80,8 @@ public class MapEditor: Editor {
                     continue;
                 }
             }
-            GUILayout.Label(node.items[i].name + "[" + node.items[i].id + "]");
+            node.items[i].name = EditorGUILayout.TextField(node.items[i].name);
+            GUILayout.Label("[" + node.items[i].id + "]");
             EditorGUILayout.EndHorizontal();
         }
 
@@ -174,9 +175,9 @@ public class MapEditor: Editor {
     private void OnSceneGUI() {
         if(map.nodes == null) map.nodes = new List<NodeForEdit>();
         if(map.nodes.Count == 0) AddNewNode("NewNode");
-        float size = 100;// HandleUtility.GetHandleSize(Vector3.zero);
+        float size = 5;// HandleUtility.GetHandleSize(Vector3.zero);
         float fSize = HandleUtility.GetHandleSize(Vector3.zero);
-        f0.fontSize = (int)(2000 / fSize);
+        f0.fontSize = (int)(20 * size / fSize);
         f0.fontSize = Mathf.Clamp(f0.fontSize, 5, 100);
         for(int i = 0; i < map.nodes.Count; i++) {
             if(map.nodes[i] == null || !map.nodes[i].hasInit) continue;
@@ -197,11 +198,11 @@ public class MapEditor: Editor {
                 Repaint();
             }
             foreach(var val in node.npcs) {
-                lPos += Vector3.down * f0.fontSize * 2;
+                lPos += Vector3.down * f0.fontSize * .02f * size;
                 Handles.Label(lPos, val.name + "[" + val.id + "]", f0);
             }
             foreach(var val in node.items) {
-                lPos += Vector3.down * f0.fontSize * 2;
+                lPos += Vector3.down * f0.fontSize * .02f * size;
                 Handles.Label(lPos, val.name + "[" + val.id + "]", f0);
             }
 
@@ -230,7 +231,7 @@ public class MapEditor: Editor {
                     fx = p1.y == p2.y ? 0 : fx;
                     float fy = p1.x > p2.x ? -1 : 1;
                     fy = p1.x == p2.x ? 0 : fy;
-                    Vector3 fix = new Vector3(fx, fy, 0) * 5;
+                    Vector3 fix = new Vector3(fx, fy, 0) * size * .05f;
                     if(p1.x != p2.x && p1.y != p2.y) {
                         fix *= 0.7f;
                     }

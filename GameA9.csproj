@@ -79,7 +79,6 @@
     <Compile Include="Assets\GameEditor\MapForEdit.cs" />
     <Compile Include="Assets\GameEditor\NodeForEdit.cs" />
     <Compile Include="Assets\GameEditor\NpcForEdit.cs" />
-    <Compile Include="Assets\GameEditor\UnitForEdit.cs" />
     <Compile Include="Assets\Lib\AdjustCamera.cs" />
     <Compile Include="Assets\Lib\AdjustCanvas.cs" />
     <Compile Include="Assets\Lib\GoKit\Plugins\GoKit\Go.cs" />
@@ -162,6 +161,9 @@
     <Compile Include="Assets\Lib\GoKit\Plugins\GoKit\properties\splines\GoSplineStraightLineSolver.cs" />
     <Compile Include="Assets\Lib\GoKitPlus\GoTweenSteam.cs" />
     <Compile Include="Assets\Lib\GoKitPlus\PositionBezierPathTweenProperty.cs" />
+    <Compile Include="Assets\Lib\UI\UIBlank.cs" />
+    <Compile Include="Assets\Lib\UI\UIColor.cs" />
+    <Compile Include="Assets\Lib\UI\UIColors.cs" />
     <Compile Include="Assets\Src\Data\AllSeeds.cs" />
     <Compile Include="Assets\Src\Data\GD\GD_Map.cs" />
     <Compile Include="Assets\Src\Data\GD\GD_Node.cs" />
@@ -169,10 +171,12 @@
     <Compile Include="Assets\Src\Data\SD\GameSeed.cs" />
     <Compile Include="Assets\Src\Data\SD\SD_Map.cs" />
     <Compile Include="Assets\Src\Data\SD\SD_Node.cs" />
+    <Compile Include="Assets\Src\UI\UIItemView.cs" />
     <Compile Include="Assets\Src\View\Game.cs" />
     <Compile Include="Assets\Src\View\Item.cs" />
     <Compile Include="Assets\Src\View\Map.cs" />
     <Compile Include="Assets\Src\View\Node.cs" />
+    <Compile Include="Assets\Src\View\Npc.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Lib\GoKit\Plugins\GoKit\easing\easeEquationsLicense.txt" />

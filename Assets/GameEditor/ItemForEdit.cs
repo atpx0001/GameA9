@@ -5,9 +5,10 @@ using System;
 public enum ItemTypes {
     新物品,
     电脑,
+    你的电脑,
 }
 [Serializable]
-public class ItemForEdit: UnitForEdit {
+public class ItemForEdit {
     public ItemTypes type = ItemTypes.电脑;
     public string name = "电脑";
     public int id;
